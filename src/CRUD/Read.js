@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Table, Button, List, Popup, Grid } from 'semantic-ui-react';
+import { Table, Button, List, Popup, Grid, Icon } from 'semantic-ui-react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import * as CgIcons from "react-icons/cg"
@@ -84,7 +84,7 @@ function Read() {
                         {/* <Table.HeaderCell>ID</Table.HeaderCell> */}
                         <Table.HeaderCell>List of Companies</Table.HeaderCell>
                         {/* <Table.HeaderCell>Last Name</Table.HeaderCell> */}
-                        <Table.HeaderCell>CRUD Operations</Table.HeaderCell>
+                        {/* <Table.HeaderCell>CRUD Operations</Table.HeaderCell> */}
                         {/* <Table.HeaderCell>Delete</Table.HeaderCell> */}
                     </Table.Row>
                 </Table.Header>
@@ -127,34 +127,37 @@ function Read() {
                                         <AiIcons.AiFillEye color='white' fontSize="1.3rem"/>
                                         </Button>
                                     </Link> */}
+                                    <div style={{float:"right",marginTop:"30px",marginRight:"30px"}}>
                                     <Popup
                                         content=''
                                         on='click' pinned 
-                                        position="bottom right" trigger={<Button content='Button' />}>
+                                        position="bottom right" trigger={<Button circular icon={<AiIcons.AiOutlineEllipsis color='black' fontSize="1.3rem"/>} />}>
                                     <Grid>
                                         <Grid.Row>
                                             <Link to='/company/edit'>
                                             <button onClick={() => setData(data)}
-                                            style={{background:"transparent", border:"none", marginLeft:"50px"}}
-                                            >Edit</button>
+                                            style={{background:"transparent", border:"none", marginLeft:"50px"}}>
+                                                <Icon name='edit'/> Edit</button>
                                             </Link>
                                         </Grid.Row>
                                         <hr/>
                                         <Grid.Row>
                                             <button onClick={() => onDelete(data.id)}
                                             style={{background:"transparent", border:"none"}}
-                                            color="red">Delete</button>
+                                            color="red">
+                                                <MdIcons.MdDelete color='black' fontSize="1.3rem"/>Delete</button>
                                         </Grid.Row>
                                     </Grid>
                                     </Popup>
+                                    </div>
                                     
-                                        <Button color='red' onClick={() => onDelete(data.id)}>
+                                        {/* <Button color='red' onClick={() => onDelete(data.id)}>
                                         <MdIcons.MdDelete color='white' fontSize="1.3rem" />
-                                        </Button>
+                                        </Button> */}
 
-                                        <Button color="green" onClick={modalOpen}>
+                                        {/* <Button color="green" onClick={modalOpen}>
                                         <MdIcons.MdDelete color='white' fontSize="1.3rem" />
-                                        </Button>
+                                        </Button> */}
                                         <Modal
                                             onClose={()=>setOpen(!open)}
                                             open={open}
