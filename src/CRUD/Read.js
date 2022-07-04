@@ -31,16 +31,29 @@ function Read() {
     }, []);
 
     const setData = (data) => {
-        let { id, image, companyName, email, companyNumber, uniqueNumber, lineofBusiness } = data;
+        let { id, image, companyName, email, companyNumber, uniqueNumber, lineofBusiness,
+                companyRevenue,openingTime,closingTime,discount,rating,address1,address2,
+                pincode,area,city,state,country } = data;
+
         localStorage.setItem('ID', id);
-        // localStorage.setItem('First Name', firstName);
-        // localStorage.setItem('Last Name', lastName);
         localStorage.setItem('Image', image);
         localStorage.setItem('Email',email);
         localStorage.setItem('Company Name', companyName);
         localStorage.setItem('Company Number', companyNumber);
         localStorage.setItem('Unique Number', uniqueNumber);
         localStorage.setItem('Line of Business', lineofBusiness);
+        localStorage.setItem('Company Revenue', companyRevenue);
+        localStorage.setItem('Opening Time', openingTime);
+        localStorage.setItem('Closing Time', closingTime);
+        localStorage.setItem('Discount', discount);
+        localStorage.setItem('Rating', rating);
+        localStorage.setItem('Address1', address1);
+        localStorage.setItem('Address2', address2);
+        localStorage.setItem('Pincode', pincode);
+        localStorage.setItem('Area', area);
+        localStorage.setItem('City', city);
+        localStorage.setItem('State', state);
+        localStorage.setItem('Country', country);
     }
 
     const getData = () => {
@@ -80,7 +93,7 @@ function Read() {
         <Button primary onClick={addUser}>Add Company</Button>
             <Table singleLine>
                 <Table.Header>
-                    <Table.Row>
+                    <Table.Row textAlign='right' >
                         {/* <Table.HeaderCell>ID</Table.HeaderCell> */}
                         <Table.HeaderCell>List of Companies</Table.HeaderCell>
                         {/* <Table.HeaderCell>Last Name</Table.HeaderCell> */}
@@ -130,7 +143,7 @@ function Read() {
                                     <div style={{float:"right",marginTop:"30px",marginRight:"30px"}}>
                                     <Popup
                                         content=''
-                                        on='click' pinned 
+                                        on='click' 
                                         position="bottom right" trigger={<Button circular icon={<AiIcons.AiOutlineEllipsis color='black' fontSize="1.3rem"/>} />}>
                                     <Grid>
                                         <Grid.Row>
