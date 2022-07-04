@@ -12,15 +12,20 @@ function Create() {
     const [email, setEmail] = useState('');
     const [lineofBusiness, setLineofBusiness] = useState('');
     const [companyNumber, setCompanyNumber] = useState('');
+    const [uniqueNumber, setUniqueNumber] = useState('');
     const [companyRevenue, setCompanyRevenue] = useState('');
     const [openingTime, setOpeningTime] = useState('');
     const [closingTime, setClosingTime] = useState('');
-    const [uniqueNumber, setUniqueNumber] = useState('');
-    const [address,setAddress] = useState('');
-    
+    const [discount, setDiscount] = useState('');
+    const [rating, setRating] = useState('');
+    const [pincode, setPincode] = useState('');
+    const [address1,setAddress1] = useState('');
+    const [address2, setAddress2] = useState('');
+    const [area, setArea] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
 
-    // const [firstName, setFirstName] = useState('');
-    // const [lastName, setLastName] = useState('');
     // const [checkbox, setCheckbox] = useState(false);
     // console.log(checkbox)
     const postData = () => {
@@ -47,16 +52,24 @@ function Create() {
                   })
             }else{
                 axios.post(url, {
-                    // firstName,
-                    // lastName,
                     image,
                     companyName,
                     email,
                     companyNumber,
                     uniqueNumber,
                     lineofBusiness,
-                    address
-                    // checkbox
+                    companyRevenue,
+                    openingTime,
+                    closingTime,
+                    address1,
+                    address2,
+                    discount,
+                    rating,
+                    pincode,
+                    area,
+                    city,
+                    state,
+                    country
                 })
     
             .then(() => {
@@ -102,8 +115,52 @@ function Create() {
                     <input  placeholder='Line of Business' onChange={(e) => setLineofBusiness(e.target.value)}/>
                 </Form.Field>
                 <Form.Field>
-                    <label>Line of business of the company</label>
-                    <input  placeholder='Address' onChange={(e) => setAddress(e.target.value)}/>
+                    <label>Revenue of the Company</label>
+                    <input  placeholder='Company Revenue' onChange={(e) => setCompanyRevenue(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Openingtime of the company</label>
+                    <input  placeholder='Opening Time' onChange={(e) => setOpeningTime(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Closingtime of the company</label>
+                    <input  placeholder='Closing Time' onChange={(e) => setClosingTime(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Discount</label>
+                    <input  placeholder='Discount' onChange={(e) => setDiscount(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Rating</label>
+                    <input  placeholder='Rating' onChange={(e) => setRating(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Address of the Head Branch</label>
+                    <input  placeholder='Address1' onChange={(e) => setAddress1(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Address of second branch(if any)</label>
+                    <input  placeholder='Address2' onChange={(e) => setAddress2(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Pincode</label>
+                    <input  placeholder='Pincode' onChange={(e) => setPincode(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Area</label>
+                    <input  placeholder='Area' onChange={(e) => setArea(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>City</label>
+                    <input  placeholder='City' onChange={(e) => setCity(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>State</label>
+                    <input  placeholder='State' onChange={(e) => setState(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Country</label>
+                    <input  placeholder='Country' onChange={(e) => setCountry(e.target.value)}/>
                 </Form.Field>
                 {/* <Form.Field>
                     <Checkbox label='I agree to the Terms and Conditions' onChange={(e) => setCheckbox(!checkbox)}/>

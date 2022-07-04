@@ -12,6 +12,18 @@ function Update() {
     const [companyNumber, setCompanyNumber] = useState('');
     const [uniqueNumber, setUniqueNumber] = useState('');
     const [lineofBusiness, setLineofBusiness] = useState('');
+    const [companyRevenue, setCompanyRevenue] = useState('');
+    const [openingTime, setOpeningTime] = useState('');
+    const [closingTime, setClosingTime] = useState('');
+    const [discount, setDiscount] = useState('');
+    const [rating, setRating] = useState('');
+    const [pincode, setPincode] = useState('');
+    const [address1,setAddress1] = useState('');
+    const [address2, setAddress2] = useState('');
+    const [area, setArea] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
 
     useEffect(() => {
         setID(localStorage.getItem('ID'))
@@ -21,6 +33,18 @@ function Update() {
         setCompanyNumber(localStorage.getItem('Company Number'));
         setUniqueNumber(localStorage.getItem('Unique Number'));
         setLineofBusiness(localStorage.getItem('Line of Business'));
+        setCompanyRevenue(localStorage.setItem('Company Revenue'));
+        setOpeningTime(localStorage.setItem('Opening Time'));
+        setClosingTime(localStorage.setItem('Closing Time'));
+        setDiscount(localStorage.setItem('Discount'));
+        setRating(localStorage.setItem('Rating'));
+        setAddress1(localStorage.setItem('Address1'));
+        setAddress2(localStorage.setItem('Address2'));
+        setPincode(localStorage.setItem('Pincode'));
+        setArea(localStorage.setItem('Area'));
+        setCity(localStorage.setItem('City'));
+        setState(localStorage.setItem('State'));
+        setCountry(localStorage.setItem('Country'));
     }, []);
 
     const updateAPIData = () => {
@@ -30,7 +54,19 @@ function Update() {
             companyName,
             companyNumber,
             uniqueNumber,
-            lineofBusiness
+            lineofBusiness,
+            companyRevenue,
+            openingTime,
+            closingTime,
+            address1,
+            address2,
+            discount,
+            rating,
+            pincode,
+            area,
+            city,
+            state,
+            country
         }).then(() => {
             navigate('/company/list')
         })
@@ -73,6 +109,54 @@ function Update() {
                 <Form.Field>
                     <label>Line of Business</label>
                     <input placeholder='Line of Business' value={lineofBusiness} onChange={(e) => setLineofBusiness(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Revenue of the Company</label>
+                    <input  placeholder='Company Revenue' value={companyRevenue} onChange={(e) => setCompanyRevenue(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Openingtime of the company</label>
+                    <input  placeholder='Opening Time' value={openingTime} onChange={(e) => setOpeningTime(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Closingtime of the company</label>
+                    <input  placeholder='Closing Time' value={closingTime} onChange={(e) => setClosingTime(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Discount</label>
+                    <input  placeholder='Discount' value={discount} onChange={(e) => setDiscount(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Rating</label>
+                    <input  placeholder='Rating' value={rating} onChange={(e) => setRating(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Address of the Head Branch</label>
+                    <input  placeholder='Address1' value={address1} onChange={(e) => setAddress1(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Address of second branch(if any)</label>
+                    <input  placeholder='Address2' value={address2} onChange={(e) => setAddress2(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Pincode</label>
+                    <input  placeholder='Pincode' value={pincode} onChange={(e) => setPincode(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Area</label>
+                    <input  placeholder='Area' value={area} onChange={(e) => setArea(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>City</label>
+                    <input  placeholder='City' value={city} onChange={(e) => setCity(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>State</label>
+                    <input  placeholder='State' value={state} onChange={(e) => setState(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                    <label>Country</label>
+                    <input  placeholder='Country' value={country} onChange={(e) => setCountry(e.target.value)}/>
                 </Form.Field>
                 <Button color='blue' type='submit' onClick={updateAPIData}>Update</Button>
                 <Button color="red" onClick={goBack}>
