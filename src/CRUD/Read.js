@@ -10,6 +10,7 @@ import * as AiIcons from 'react-icons/ai';
 import * as BiIcons from "react-icons/bi";
 
 import Modal from "@material-ui/core/Modal";
+import { isDisabled } from '@testing-library/user-event/dist/utils';
 // import { Typography } from '@material-ui/core';
 
 function Read() {
@@ -23,9 +24,9 @@ function Read() {
         // formData.append('image',image)
 
     useEffect(() => {
-        axios.get(`https://62a6f21797b6156bff833b05.mockapi.io/CRUD`)
+        axios.get(`https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud`)
             .then((response) => {
-                console.log(response.data)
+                console.log(response.data);
                 setAPIData(response.data);
             })
     }, []);
@@ -57,14 +58,14 @@ function Read() {
     }
 
     const getData = () => {
-        axios.get(`https://62a6f21797b6156bff833b05.mockapi.io/CRUD`)
+        axios.get(`https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud`)
             .then((getData) => {
                 setAPIData(getData.data);
             })
     }
 
     const onDelete = (id) => {
-        axios.delete(`https://62a6f21797b6156bff833b05.mockapi.io/CRUD/${id}`)
+        axios.delete(`https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud/${id}`)
         
         // .then(()=>{
         //     navigate("/company/list");
@@ -85,29 +86,93 @@ function Read() {
 
     const [open, setOpen] = useState(false);
 
-    const modalOpen = () => setOpen(!open);
+    const modalOpen = () => {
+        setOpen(!open);
 
+    }
 
     return (
-        <div className='container-fluid'>
-        <Button primary onClick={addUser}>Add Company</Button>
-            <Table singleLine>
+        <>
+       <div className='container-fluid'>
+       <Button primary onClick={addUser}>Add Company</Button>
+       <>
+       
+       <table style={{width:"800px",height:"200px"}}>
+       <thead style={{margin:"50px"}}>
+        <tr>
+            <th style={{textAlign:"center"}}>List of Companies</th>
+        </tr>
+       </thead>
+                {APIData.map((data,id)=>{
+                    return(
+                        <>
+                        {/* <tbody>
+                            data.image
+                        </tbody> */}
+                        <tbody key={id}>
+                            <li style={{ minHeight:"120px",borderRadius:"5px",margin:"20px 0px",listStyle:"none",padding:"25px",
+                                        backgroundColor:"white",boxShadow:"0 0 20px 0px rgba(0,0,0,0.2)"}}>
+                            <tr>
+                            <Link to="/company/view">
+                                            <button 
+                                                style={{background:"transparent",border:"none",color:"blue"}} 
+                                                    onClick={() => setData(data)}>
+                                                {data.companyName}
+                                            </button>
+                                            
+                            </Link>
+                            <div style={{marginLeft:"650px"}}>
+                                    <Popup
+                                        content=''
+                                        on='click'
+                                        // openOnTriggerMouseEnter
+                                        openOnTriggerClick
+                                        position="bottom right"
+                                        trigger={<Button circular icon={<AiIcons.AiOutlineEllipsis color='black' fontSize="1.3rem"/>} />}>
+                                    <Grid>
+                                        <Grid.Row>
+                                            <Link to='/company/edit'>
+                                            <button onClick={() => setData(data)}
+                                            style={{background:"transparent", border:"none", marginLeft:"50px"}}>
+                                                <Icon name='edit'/> Edit</button>
+                                            </Link>
+                                        </Grid.Row>
+                                        <hr/>
+                                        <Grid.Row>
+                                            <button onClick={() => onDelete(data.id)}
+                                                    style={{background:"transparent", border:"none"}}
+                                                    color="red">
+                                                <MdIcons.MdDelete color='black' fontSize="1.3rem"/>delete
+                                            </button>
+                                        </Grid.Row>
+                                    </Grid>
+                                    </Popup>
+                                    </div>
+                            </tr>
+                            <tr>{data.companyNumber}</tr>
+                            <tr>{data.uniqueNumber}</tr>
+                            <tr>{data.lineofBusiness}</tr>
+                            
+                            </li>
+
+                        </tbody>
+                        
+                        </>
+                    )
+                })}
+       </table>
+       </>
+        {/*       <Table singleLine>
                 <Table.Header>
                     <Table.Row textAlign='right' >
-                        {/* <Table.HeaderCell>ID</Table.HeaderCell> */}
                         <Table.HeaderCell>List of Companies</Table.HeaderCell>
-                        {/* <Table.HeaderCell>Last Name</Table.HeaderCell> */}
-                        {/* <Table.HeaderCell>CRUD Operations</Table.HeaderCell> */}
-                        {/* <Table.HeaderCell>Delete</Table.HeaderCell> */}
                     </Table.Row>
                 </Table.Header>
                 
-                {/* <div style={{marginTop:"20px"}}> */}
                 <Table.Body>
                     {APIData.map((data) => {
                         return (
                             <Table.Row>
-                                {/* <Table.Cell>{data.id}</Table.Cell> */}
                                 <Table.Cell>
                                     <List>
                                         <List.Item>
@@ -130,21 +195,13 @@ function Read() {
                                     </List>
                                 </Table.Cell>
                                 <Table.Cell> 
-                                    {/* <Link to='/company/edit'>
-                                        <Button primary onClick={() => setData(data)}>
-                                        <BiIcons.BiEdit color='white' fontSize="1.3rem"/>
-                                        </Button>
-                                    </Link> */}
-                                    {/* <Link to='/company/view'>
-                                        <Button color='green' onClick={() => setData(data)}>
-                                        <AiIcons.AiFillEye color='white' fontSize="1.3rem"/>
-                                        </Button>
-                                    </Link> */}
+
                                     <div style={{float:"right",marginTop:"30px",marginRight:"30px"}}>
                                     <Popup
                                         content=''
                                         on='click' 
-                                        position="bottom right" trigger={<Button circular icon={<AiIcons.AiOutlineEllipsis color='black' fontSize="1.3rem"/>} />}>
+                                        position="bottom right" 
+                                        trigger={<Button circular icon={<AiIcons.AiOutlineEllipsis color='black' fontSize="1.3rem"/>} />}>
                                     <Grid>
                                         <Grid.Row>
                                             <Link to='/company/edit'>
@@ -163,14 +220,6 @@ function Read() {
                                     </Grid>
                                     </Popup>
                                     </div>
-                                    
-                                        {/* <Button color='red' onClick={() => onDelete(data.id)}>
-                                        <MdIcons.MdDelete color='white' fontSize="1.3rem" />
-                                        </Button> */}
-
-                                        {/* <Button color="green" onClick={modalOpen}>
-                                        <MdIcons.MdDelete color='white' fontSize="1.3rem" />
-                                        </Button> */}
                                         <Modal
                                             onClose={()=>setOpen(!open)}
                                             open={open}
@@ -194,7 +243,6 @@ function Read() {
                                                 </div>
                                                 <div className="col-lg-6">
                                                 <Link to='/company/list'>
-                                                {/* onClick={() => setData(data)} */}
                                                     <Button primary onClick={() => modalOpen(!open)}>
                                                         Cancel
                                                     </Button>
@@ -203,28 +251,16 @@ function Read() {
                                                 </div>
                                             </div>
                                         </>
-                                            {/* <h2><button>
-                                                Cancel
-                                            </button></h2> */}
-                                            {/* <p>Yes</p> */}
-                                            {/* <p>Cancel</p> */}
                                         </Modal>
 
                                 </Table.Cell>
-                                
-                                {/* <Table.Cell> 
-                                        
-                                </Table.Cell>
-                                <Table.Cell>
-                                    
-                                </Table.Cell> */}
                             </Table.Row>
                         )
                     })}
                 </Table.Body>
-                {/* </div> */}
-            </Table>
-        </div>
+            </Table>*/}
+        </div> 
+        </>
     )
 }
 

@@ -18,28 +18,28 @@ function View() {
     const [companyNumber, setCompanyNumber] = useState('');
     const [uniqueNumber, setUniqueNumber] = useState('');
     const [lineofBusiness, setLineofBusiness] = useState('');
-    // const [companyRevenue, setCompanyRevenue] = useState('');
-    // const [openingTime, setOpeningTime] = useState('');
-    // const [closingTime, setClosingTime] = useState('');
-    // const [discount, setDiscount] = useState('');
-    // const [rating, setRating] = useState('');
-    // const [pincode, setPincode] = useState('');
-    // const [address1,setAddress1] = useState('');
-    // const [address2, setAddress2] = useState('');
-    // const [area, setArea] = useState('');
-    // const [city, setCity] = useState('');
-    // const [state, setState] = useState('');
-    // const [country, setCountry] = useState('');
+    const [companyRevenue, setCompanyRevenue] = useState('');
+    const [openingTime, setOpeningTime] = useState('');
+    const [closingTime, setClosingTime] = useState('');
+    const [discount, setDiscount] = useState('');
+    const [rating, setRating] = useState('');
+    const [pincode, setPincode] = useState('');
+    const [address1,setAddress1] = useState('');
+    const [address2, setAddress2] = useState('');
+    const [area, setArea] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
 
-    // const [APIData, setAPIData] = useState([]);
+    const [APIData, setAPIData] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get(`https://62a6f21797b6156bff833b05.mockapi.io/CRUD`)
-    //         .then((response) => {
-    //             console.log(response.data)
-    //             setAPIData(response.data);
-    //         })
-    // }, []);
+    useEffect(() => {
+        axios.get(`https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud`)
+            .then((response) => {
+                console.log(response.data)
+                setAPIData(response.data);
+            })
+    }, []);
 
 
     const setData = (data) => {
@@ -76,18 +76,18 @@ function View() {
         setCompanyNumber(localStorage.getItem('Company Number'));
         setUniqueNumber(localStorage.getItem('Unique Number'));
         setLineofBusiness(localStorage.getItem('Line of Business'));
-        // setCompanyRevenue(localStorage.setItem('Company Revenue'));
-        // setOpeningTime(localStorage.setItem('Opening Time'));
-        // setClosingTime(localStorage.setItem('Closing Time'));
-        // setDiscount(localStorage.setItem('Discount'));
-        // setRating(localStorage.setItem('Rating'));
-        // setAddress1(localStorage.setItem('Address1'));
-        // setAddress2(localStorage.setItem('Address2'));
-        // setPincode(localStorage.setItem('Pincode'));
-        // setArea(localStorage.setItem('Area'));
-        // setCity(localStorage.setItem('City'));
-        // setState(localStorage.setItem('State'));
-        // setCountry(localStorage.setItem('Country'));
+        setCompanyRevenue(localStorage.getItem('Company Revenue'));
+        setOpeningTime(localStorage.getItem('Opening Time'));
+        setClosingTime(localStorage.getItem('Closing Time'));
+        setDiscount(localStorage.getItem('Discount'));
+        setRating(localStorage.getItem('Rating'));
+        setAddress1(localStorage.getItem('Address1'));
+        setAddress2(localStorage.getItem('Address2'));
+        setPincode(localStorage.getItem('Pincode'));
+        setArea(localStorage.getItem('Area'));
+        setCity(localStorage.getItem('City'));
+        setState(localStorage.getItem('State'));
+        setCountry(localStorage.getItem('Country'));
     }, []);
 
     // const updateAPIData = () => {
@@ -128,7 +128,14 @@ function View() {
                     <li style={{marginTop:"10px"}}><FiIcons.FiPhoneCall style={{width:"20px",height:"20px",margin:"10px"}}/>{companyNumber}</li>
                     <li style={{marginTop:"10px"}}><BsIcons.BsGlobe style={{width:"20px",height:"20px",margin:"10px"}}/>Website URL</li>
                 </ul>
-                <p style={{position:"relative",marginLeft:"500px",marginTop:"-150px"}}>Line of Business</p>
+                <ul  style={{marginLeft:"600px",listStyle:"none",marginTop:"-150px"}}>
+                    <li style={{marginTop:"10px",margin:"10px"}}>Line of Business:{lineofBusiness}</li>
+                    <li style={{marginTop:"30px",margin:"10px"}}>Discount: {discount}</li>
+                    <li style={{marginTop:"25px",margin:"10px"}}>Rating: {rating}</li>
+                </ul>
+                {/* <p style={{position:"relative",marginLeft:"500px",marginTop:"-150px"}}>Line of Business</p>
+                    <p style={{position:"relative",marginLeft:"500px"}}><label>Discount: {discount}</label></p>
+                    <p style={{position:"relative",marginLeft:"500px"}}><label>Rating: {rating}</label></p> */}
             </div>
         </div>
         <div className='text-black text-lg-center' 
@@ -163,9 +170,9 @@ function View() {
                 <Form.Field>
                     <label>E-mail ID:{email}</label>
                 </Form.Field> */}
-                <Form.Field>
+                {/* <Form.Field>
                     <label>Line of Business:{lineofBusiness}</label>
-                </Form.Field>
+                </Form.Field> */}
                 <Form.Field>
                     <label>GSTIN:GSTIN</label>
                 </Form.Field>
@@ -191,6 +198,8 @@ function View() {
                     <label>Company Unique Number:{uniqueNumber}</label>
                     {/* <p>{uniqueNumber}</p> */}
                 </Form.Field>
+                
+
                 
                 <Button primary type="submit" onClick={backHome} >Go back home</Button>
             </Form>

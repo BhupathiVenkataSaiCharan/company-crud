@@ -33,22 +33,22 @@ function Update() {
         setCompanyNumber(localStorage.getItem('Company Number'));
         setUniqueNumber(localStorage.getItem('Unique Number'));
         setLineofBusiness(localStorage.getItem('Line of Business'));
-        setCompanyRevenue(localStorage.setItem('Company Revenue'));
-        setOpeningTime(localStorage.setItem('Opening Time'));
-        setClosingTime(localStorage.setItem('Closing Time'));
-        setDiscount(localStorage.setItem('Discount'));
-        setRating(localStorage.setItem('Rating'));
-        setAddress1(localStorage.setItem('Address1'));
-        setAddress2(localStorage.setItem('Address2'));
-        setPincode(localStorage.setItem('Pincode'));
-        setArea(localStorage.setItem('Area'));
-        setCity(localStorage.setItem('City'));
-        setState(localStorage.setItem('State'));
-        setCountry(localStorage.setItem('Country'));
+        setCompanyRevenue(localStorage.getItem('Company Revenue'));
+        setOpeningTime(localStorage.getItem('Opening Time'));
+        setClosingTime(localStorage.getItem('Closing Time'));
+        setDiscount(localStorage.getItem('Discount'));
+        setRating(localStorage.getItem('Rating'));
+        setAddress1(localStorage.getItem('Address1'));
+        setAddress2(localStorage.getItem('Address2'));
+        setPincode(localStorage.getItem('Pincode'));
+        setArea(localStorage.getItem('Area'));
+        setCity(localStorage.getItem('City'));
+        setState(localStorage.getItem('State'));
+        setCountry(localStorage.getItem('Country'));
     }, []);
 
     const updateAPIData = () => {
-        axios.put(`https://62a6f21797b6156bff833b05.mockapi.io/CRUD/${id}`, {
+        axios.put(`https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud/${id}`, {
             image,
             email,
             companyName,
@@ -108,7 +108,15 @@ function Update() {
                 </Form.Field>
                 <Form.Field>
                     <label>Line of Business</label>
-                    <input placeholder='Line of Business' value={lineofBusiness} onChange={(e) => setLineofBusiness(e.target.value)}/>
+                    {/* <input placeholder='Line of Business' value={lineofBusiness} onChange={(e) => setLineofBusiness(e.target.value)}/> */}
+                    <select value={lineofBusiness} onChange={(e)=>{setLineofBusiness(e.target.value)}}>
+                        <option value="Products and Services">Product & Services</option>
+                        <option value="Products">Products</option>
+                        <option value="Services">Services</option>
+                        <option value="Business">Business</option>
+                        <option value="Education">Education</option>
+                        <option value="Others">Others</option>
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Revenue of the Company</label>
@@ -124,11 +132,19 @@ function Update() {
                 </Form.Field>
                 <Form.Field>
                     <label>Discount</label>
-                    <input  placeholder='Discount' value={discount} onChange={(e) => setDiscount(e.target.value)}/>
+                    {/* <input  placeholder='Discount' value={discount} onChange={(e) => setDiscount(e.target.value)}/> */}
+                    <select value={discount} onChange={(e)=>setDiscount(e.target.value)}>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Rating</label>
-                    <input  placeholder='Rating' value={rating} onChange={(e) => setRating(e.target.value)}/>
+                    {/* <input  placeholder='Rating' value={rating} onChange={(e) => setRating(e.target.value)}/> */}
+                    <select value={rating} onChange={(e)=>setRating(e.target.value)}>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Address of the Head Branch</label>

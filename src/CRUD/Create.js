@@ -16,8 +16,8 @@ function Create() {
     const [companyRevenue, setCompanyRevenue] = useState('');
     const [openingTime, setOpeningTime] = useState('');
     const [closingTime, setClosingTime] = useState('');
-    const [discount, setDiscount] = useState('');
-    const [rating, setRating] = useState('');
+    const [discount, setDiscount] = useState('yes');
+    const [rating, setRating] = useState('yes');
     const [pincode, setPincode] = useState('');
     const [address1,setAddress1] = useState('');
     const [address2, setAddress2] = useState('');
@@ -30,7 +30,7 @@ function Create() {
     // console.log(checkbox)
     const postData = () => {
 
-        const url = `https://62a6f21797b6156bff833b05.mockapi.io/CRUD`
+        const url = `https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud`
 
         // const formData = new FormData()
         // formData.append('image',image)
@@ -43,14 +43,16 @@ function Create() {
                     text: 'All fields are mandatory!',
                     showConfirmButton: true
                   })
-            }else if(companyNumber.length !==10){
-                return Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Company Number is mandatory!',
-                    showConfirmButton: true
-                  })
+            // }else if(companyNumber.length !==10){
+            //     return Swal.fire({
+            //         icon: 'error',
+            //         title: 'Error',
+            //         text: 'Company Number is mandatory!',
+            //         showConfirmButton: true
+            //       })
             }else{
+
+
                 axios.post(url, {
                     image,
                     companyName,
@@ -92,7 +94,7 @@ function Create() {
                 <Form.Field>
                     <label>Image</label>
                     {/* <input required placeholder='First Name' onChange={(e) => setImage(e.target.value)}/> */}
-                    <input type="file" accept='image' onChange={(e) => setImage(e.target.value)} />
+                    <input type="file" accept='image' onChange={(e) => setImage(e.target.files[0])} />
                 </Form.Field>
                 <Form.Field>
                     <label>Company Name</label>
@@ -112,7 +114,14 @@ function Create() {
                 </Form.Field>
                 <Form.Field>
                     <label>Line of business of the company</label>
-                    <input  placeholder='Line of Business' onChange={(e) => setLineofBusiness(e.target.value)}/>
+                    {/* <input  placeholder='Line of Business' onChange={(e) => setLineofBusiness(e.target.value)}/> */}
+                    <select value={lineofBusiness} onChange={(e)=>{setLineofBusiness(e.target.value)}}>
+                        <option value="ps">Product & Services</option>
+                        <option value="pro">Products</option>
+                        <option value="serv">Services</option>
+                        <option value="bus">Business</option>
+                        <option value="edu">Education</option>
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Revenue of the Company</label>
@@ -128,11 +137,19 @@ function Create() {
                 </Form.Field>
                 <Form.Field>
                     <label>Discount</label>
-                    <input  placeholder='Discount' onChange={(e) => setDiscount(e.target.value)}/>
+                    {/* <input  placeholder='Discount' onChange={(e) => setDiscount(e.target.value)}/> */}
+                    <select value={discount} onChange={(e)=>setDiscount(e.target.value)}>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Rating</label>
-                    <input  placeholder='Rating' onChange={(e) => setRating(e.target.value)}/>
+                    {/* <input  placeholder='Rating' onChange={(e) => setRating(e.target.value)}/> */}
+                    <select value={rating} onChange={(e)=>setRating(e.target.value)}>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Address of the Head Branch</label>
