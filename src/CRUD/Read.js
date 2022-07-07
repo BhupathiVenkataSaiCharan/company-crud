@@ -10,8 +10,9 @@ import * as AiIcons from 'react-icons/ai';
 import * as BiIcons from "react-icons/bi";
 
 import Modal from "@material-ui/core/Modal";
-import { isDisabled } from '@testing-library/user-event/dist/utils';
 // import { Typography } from '@material-ui/core';
+
+import SideMenu from '../SideMenu/SideMenu';
 
 function Read() {
 
@@ -94,10 +95,20 @@ function Read() {
     return (
         <>
        <div className='container-fluid'>
-       <Button primary onClick={addUser}>Add Company</Button>
-       <>
-       
-       <table style={{width:"800px",height:"200px"}}>
+            <div className='row'>
+                <div className='col-lg-12' style={{marginLeft:"-11px"}}>
+                    <SideMenu/>
+                </div>
+            </div>
+            <div className='row'>
+                <div className='col-lg-3'></div>
+                <div className='col-lg-6'>
+                    <Button primary
+                        style={{width:"150px",height:"40px"}}
+                        onClick={addUser}>Add Company</Button>
+
+
+<table style={{width:"800px",height:"200px"}}>
        <thead style={{margin:"50px"}}>
         <tr>
             <th style={{textAlign:"center"}}>List of Companies</th>
@@ -109,6 +120,75 @@ function Read() {
                         {/* <tbody>
                             data.image
                         </tbody> */}
+                        <tbody key={id}>
+                            <li style={{ minHeight:"140px",borderRadius:"5px",margin:"20px 0px",listStyle:"none",padding:"25px",
+                                        backgroundColor:"white",boxShadow:"0 0 20px 0px rgba(0,0,0,0.2)"}}>
+                            <tr>
+                            <Link to="/company/view">
+                                            <button 
+                                                style={{background:"transparent",border:"none",color:"blue"}} 
+                                                    onClick={() => setData(data)}>
+                                                {data.companyName}
+                                            </button>
+                                            
+                            </Link>
+                            </tr>
+                            <tr>{data.companyNumber}</tr>
+                            <tr>{data.uniqueNumber}</tr>
+                            <tr>{data.lineofBusiness}</tr>
+                            </li>
+                            <div style={{position:"absolute",right:"380px",marginTop:"-120px"}}>
+                                    <Popup
+                                        content=''
+                                        on='click'
+                                        openOnTriggerClick
+                                        position="bottom right"
+                                        trigger={<Button circular basic icon={<AiIcons.AiOutlineEllipsis bo color='black' fontSize="1.3rem"/>} />}>
+                                    <Grid>
+                                        <Grid.Row>
+                                            <Link to='/company/edit'>
+                                            <button onClick={() => setData(data)}
+                                            style={{background:"transparent", border:"none", marginLeft:"50px"}}>
+                                                <Icon name='edit'/> Edit</button>
+                                            </Link>
+                                        </Grid.Row>
+                                        <hr/>
+                                        <Grid.Row>
+                                            <button onClick={() => onDelete(data.id)}
+                                                    style={{background:"transparent", border:"none"}}
+                                                    color="red">
+                                                <MdIcons.MdDelete color='black' fontSize="1.3rem"/>delete
+                                            </button>
+                                        </Grid.Row>
+                                    </Grid>
+                                    </Popup>
+                            </div>
+                        </tbody>
+                        </>
+                            )
+                        })}
+                    </table>
+                </div>
+            </div>
+        </div>
+       {/* <div className='row'> */}
+
+       
+       {/* <Button primary onClick={addUser}>Add Company</Button>
+       <>
+       
+       <table style={{width:"800px",height:"200px"}}>
+       <thead style={{margin:"50px"}}>
+        <tr>
+            <th style={{textAlign:"center"}}>List of Companies</th>
+        </tr>
+       </thead>
+                {APIData.map((data,id)=>{
+                    return(
+                        <>
+                        //<tbody>
+                          //  data.image
+                        //</tbody>
                         <tbody key={id}>
                             <li style={{ minHeight:"120px",borderRadius:"5px",margin:"20px 0px",listStyle:"none",padding:"25px",
                                         backgroundColor:"white",boxShadow:"0 0 20px 0px rgba(0,0,0,0.2)"}}>
@@ -125,7 +205,6 @@ function Read() {
                                     <Popup
                                         content=''
                                         on='click'
-                                        // openOnTriggerMouseEnter
                                         openOnTriggerClick
                                         position="bottom right"
                                         trigger={<Button circular icon={<AiIcons.AiOutlineEllipsis color='black' fontSize="1.3rem"/>} />}>
@@ -162,6 +241,8 @@ function Read() {
                 })}
        </table>
        </>
+       </div> */}
+        {/* </div> */}
         {/*       <Table singleLine>
                 <Table.Header>
                     <Table.Row textAlign='right' >
@@ -259,8 +340,9 @@ function Read() {
                     })}
                 </Table.Body>
             </Table>*/}
-        </div> 
-        </>
+    </>
+
+            
     )
 }
 

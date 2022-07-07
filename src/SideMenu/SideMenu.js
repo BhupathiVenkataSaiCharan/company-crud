@@ -9,14 +9,15 @@ import {SidemenuData} from './SidemenuData';
 import SubMenu from './SubMenu';
 
 
-
-// background: #15171c;
+// display: flex;
+  // justify-content: flex-start;
+  // align-items: center;
+  // background: #15171c;
 const Nav = styled.div`
   background: #15171c;
-  height: 60px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  height: 80px;
+  width:1540px;
+  margin-left:0px;  
   margin-bottom:25px;
 `;
 
@@ -28,13 +29,18 @@ const NavIcon = styled(Link)`
   justify-content: flex-start;
   align-items: center;
 `;
+
+// display: flex;
+//   justify-content: flex-end;
+//   align-items: center;
 const NavIcon2 = styled(Link)`
-  margin-left: 1200px;
-  font-size: 2rem;
-  height: 80px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  margin-left: 1300px;
+  font-size: 2.5rem;
+  background:transparent;
+  display:flex;
+  justify-content:flex-end;
+  margin-right:100px;
+  margin-top:-50px;
 `;
 
 const SidebarNav = styled.nav`
@@ -83,7 +89,7 @@ const SideMenu = () => {
 
   return (
     <>
-    <div style={{backgroundColor:"#15171c",height:"100%"}}>
+    <div>
       <div>
         <Nav>
           <NavIcon to='#'>

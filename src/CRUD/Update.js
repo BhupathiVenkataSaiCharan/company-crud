@@ -80,10 +80,10 @@ function Update() {
         <div className="container-fluid">
            
             <div className='row'>
-            <div className='col-lg-4'>
+            <div className='col-lg-3'>
 
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6" style={{marginTop:"40px"}}>
 
             <Form className="create-form">
                 <Form.Field>

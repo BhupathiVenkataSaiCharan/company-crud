@@ -5,13 +5,13 @@ const Overview = () => {
   return (
     <>
         <div className='container-fluid'>
-            <div className='row'>
-              <div className='col-lg-3 text-black'>
-              </div>
-              <div className='col-lg-6 text-black'>
-                  <h1>Overview</h1>
+            <div className='row gx-lg-0'>
+              {/* <div className='col-lg-3 text-black'>
+              </div> */}
+              {/* <div className='col-lg-6 text-black'>
                   <Read/>
-              </div>
+              </div> */}
+              <Read/>
             </div>
         </div>
     </>

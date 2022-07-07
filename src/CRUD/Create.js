@@ -16,8 +16,8 @@ function Create() {
     const [companyRevenue, setCompanyRevenue] = useState('');
     const [openingTime, setOpeningTime] = useState('');
     const [closingTime, setClosingTime] = useState('');
-    const [discount, setDiscount] = useState('yes');
-    const [rating, setRating] = useState('yes');
+    const [discount, setDiscount] = useState('not-selected');
+    const [rating, setRating] = useState('not-selected');
     const [pincode, setPincode] = useState('');
     const [address1,setAddress1] = useState('');
     const [address2, setAddress2] = useState('');
@@ -35,7 +35,7 @@ function Create() {
         // const formData = new FormData()
         // formData.append('image',image)
         // console.log("hello charan")
-            if(companyName.length <= 3){
+            if(companyName.length <= 3 || companyNumber.length !== 10){
                 // alert("invalid name of company");
                 return Swal.fire({
                     icon: 'error',
@@ -141,6 +141,7 @@ function Create() {
                     <select value={discount} onChange={(e)=>setDiscount(e.target.value)}>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
+                        <option value="not-selected">none</option>
                     </select>
                 </Form.Field>
                 <Form.Field>
@@ -149,6 +150,7 @@ function Create() {
                     <select value={rating} onChange={(e)=>setRating(e.target.value)}>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
+                        <option value="not-selected">none</option>
                     </select>
                 </Form.Field>
                 <Form.Field>
