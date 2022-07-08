@@ -92,6 +92,10 @@ function Read() {
 
     }
 
+    //search filter
+
+    const [search, setSearch] = useState('');
+
     return (
         <>
        <div className='container-fluid'>
@@ -107,6 +111,9 @@ function Read() {
                         style={{width:"150px",height:"40px"}}
                         onClick={addUser}>Add Company</Button>
 
+                        {/* search input */}
+                        <input type="text" value={search} onChange={(e)=> setSearch(e.target.value)} style={{width:"150px",height:"40px"}} />
+
 
 <table style={{width:"800px",height:"200px"}}>
        <thead style={{margin:"50px"}}>
@@ -114,7 +121,7 @@ function Read() {
             <th style={{textAlign:"center"}}>List of Companies</th>
         </tr>
        </thead>
-                {APIData.map((data,id)=>{
+                {APIData.filter(data=> data.companyName.includes(search)).map((data,id)=>{
                     return(
                         <>
                         {/* <tbody>
@@ -168,7 +175,9 @@ function Read() {
                             )
                         })}
                     </table>
+                    
                 </div>
+                <p>hello</p>
             </div>
         </div>
        {/* <div className='row'> */}

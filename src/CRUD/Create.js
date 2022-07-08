@@ -35,24 +35,29 @@ function Create() {
         // const formData = new FormData()
         // formData.append('image',image)
         // console.log("hello charan")
-            if(companyName.length <= 3 || companyNumber.length !== 10){
+            if(companyName.length <= 1){
                 // alert("invalid name of company");
                 return Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'All fields are mandatory!',
+                    text: 'Company name should not be empty',
                     showConfirmButton: true
                   })
-            // }else if(companyNumber.length !==10){
-            //     return Swal.fire({
-            //         icon: 'error',
-            //         title: 'Error',
-            //         text: 'Company Number is mandatory!',
-            //         showConfirmButton: true
-            //       })
+            }else if(companyNumber.length !== 10){
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'mobile number should be a 10 digit number',
+                    showConfirmButton: true
+                  })
+            }else if(discount == "not-selected"){
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'discount details must be selected',
+                    showConfirmButton: true
+                  })
             }else{
-
-
                 axios.post(url, {
                     image,
                     companyName,
