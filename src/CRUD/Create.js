@@ -10,7 +10,7 @@ function Create() {
     const [image, setImage] = useState('');
     const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
-    const [lineofBusiness, setLineofBusiness] = useState('');
+    const [lineofBusiness, setLineofBusiness] = useState('not-selected');
     const [companyNumber, setCompanyNumber] = useState('');
     const [uniqueNumber, setUniqueNumber] = useState('');
     const [companyRevenue, setCompanyRevenue] = useState('');
@@ -126,6 +126,7 @@ function Create() {
                         <option value="serv">Services</option>
                         <option value="bus">Business</option>
                         <option value="edu">Education</option>
+                        <option value="not-selected">none</option>
                     </select>
                 </Form.Field>
                 <Form.Field>

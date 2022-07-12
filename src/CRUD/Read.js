@@ -1,15 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Table, Button, List, Popup, Grid, Icon } from 'semantic-ui-react';
+import { Table, Button, List, Popup, Grid, Icon,Dropdown,Menu, Header } from 'semantic-ui-react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import * as CgIcons from "react-icons/cg"
 import * as MdIcons from "react-icons/md"
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import * as BiIcons from "react-icons/bi";
+import * as FiIcons from "react-icons/fi";
 
-import Modal from "@material-ui/core/Modal";
+
+import {
+     Modal, ModalFooter,
+    ModalHeader, ModalBody
+} from "reactstrap"
+
+// import Modal from "@material-ui/core/Modal";
 // import { Typography } from '@material-ui/core';
 
 import SideMenu from '../SideMenu/SideMenu';
@@ -17,6 +23,8 @@ import SideMenu from '../SideMenu/SideMenu';
 function Read() {
 
     const [APIData, setAPIData] = useState([]);
+
+    const [idToDelete, setIdToDelete] = useState(0);
     
     // const url = `https://62a6f21797b6156bff833b05.mockapi.io/CRUD`
 
@@ -66,11 +74,16 @@ function Read() {
     }
 
     const onDelete = (id) => {
-        axios.delete(`https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud/${id}`)
+        axios.delete(`https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud/${idToDelete}`)
+
         
         // .then(()=>{
         //     navigate("/company/list");
         // })
+        .then(()=>{
+            navigate("/company/list");
+            toggle();
+        })
         .then(() => {
             getData();
         })
@@ -87,14 +100,38 @@ function Read() {
 
     const [open, setOpen] = useState(false);
 
-    const modalOpen = () => {
-        setOpen(!open);
+    const toggle = () => setOpen(!open);
 
-    }
 
-    //search filter
+    //search filter const for individual data
+
+    // const [filter,setFilter] = useState("");
 
     const [search, setSearch] = useState('');
+
+    // const [output,setOutput] = useState('');
+    
+    // useEffect(()=>{
+    //     setOutput([])
+    //     APIData.filter((val)=>{
+    //         if(val.companyName.toLowerCase().includes(search.toLowerCase())){
+    //             setOutput(output=>[...output,val])
+    //         }
+    //     })
+    // },[search])
+
+    // search const for multiple items
+
+    // const [searchText, setSearchText] = useState('');
+    // const [ data1,setData1] = useState('');
+
+    // const handleChange = (value) =>{
+    //     setSearchText(value);
+    // }
+
+    // const [crud, setCrud] = useState(false);
+
+
 
     return (
         <>
@@ -111,17 +148,27 @@ function Read() {
                         style={{width:"150px",height:"40px"}}
                         onClick={addUser}>Add Company</Button>
 
-                        {/* search input */}
-                        <input type="text" value={search} onChange={(e)=> setSearch(e.target.value)} style={{width:"150px",height:"40px"}} />
+                        {/* search input for individual data */}
+                        <input type="text" value={search} onChange={(e)=> setSearch(e.target.value)} placeholder="Search by any Category"
+                                style={{position:"absolute",width:"260px",height:"40px",marginLeft:"285px",border:"none",
+                                        fontSize:"15px",padding:"8px",borderRadius:"20px 20px 20px 20px"}} />
 
+                            {/* Search:<input type="text" placeholder='type to search' value={searchText} onChange={(e)=>handleChange(e.target.value)} /> */}
 
-<table style={{width:"800px",height:"200px"}}>
+<table style={{width:"700px",height:"200px"}}>
        <thead style={{margin:"50px"}}>
         <tr>
             <th style={{textAlign:"center"}}>List of Companies</th>
         </tr>
        </thead>
-                {APIData.filter(data=> data.companyName.includes(search)).map((data,id)=>{
+       
+{/*to add search for 1 particular id-------
+.filter(data=> data.companyName.toLowerCase().includes(search.toLowerCase()))-----add this tho below btw APIData and .map */}
+        
+{/*to add search for all categories of array data--------
+.filter(data =>Object.values(data).some(value => value.toLowerCase().includes(search.toLowerCase())))
+-----add this tho below btw APIData and .map */}
+        {APIData.filter(data =>Object.values(data).some(value => value.toLowerCase().includes(search.toLowerCase()))).map((data,id)=>{
                     return(
                         <>
                         {/* <tbody>
@@ -144,11 +191,12 @@ function Read() {
                             <tr>{data.uniqueNumber}</tr>
                             <tr>{data.lineofBusiness}</tr>
                             </li>
-                            <div style={{position:"absolute",right:"380px",marginTop:"-120px"}}>
-                                    <Popup
+                            {/* style={{position:"absolute",right:"480px",marginTop:"-120px"}} */}
+                            <div style={{position:"absolute",marginLeft:"580px",marginTop:"-120px"}}>
+                                    {/* <Popup
                                         content=''
                                         on='click'
-                                        openOnTriggerClick
+                                        closeOnTriggerClick
                                         position="bottom right"
                                         trigger={<Button circular basic icon={<AiIcons.AiOutlineEllipsis bo color='black' fontSize="1.3rem"/>} />}>
                                     <Grid>
@@ -168,7 +216,95 @@ function Read() {
                                             </button>
                                         </Grid.Row>
                                     </Grid>
-                                    </Popup>
+                                    </Popup> */}
+                            <Dropdown icon={<AiIcons.AiOutlineEllipsis 
+                                                    style={{color:'black',fontSize:"1.3rem",marginTop:"15px",marginLeft:"30px",
+                                                            border:"1px solid black",width:"30px",height:"30px",borderRadius:"50%"}}
+                                                    />} pointing="top right">
+                                <Dropdown.Menu>
+                                    <Dropdown.Item icon='edit' text='Edit'>
+                                        <Link to='/company/edit'>
+                                            <button onClick={() => setData(data)}
+                                            style={{background:"transparent", border:"none"}}>
+                                                 <FiIcons.FiEdit color='black' fontSize="1.3rem"/> Edit</button>
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item icon='delete' text='Delete'>
+                                            {/* <button onClick={toggle} */}
+                                            <button onClick={() => {setIdToDelete(data.id);toggle();}}
+                                            
+                                                    style={{background:"transparent", border:"none"}}
+                                                    color="red">
+                                                <MdIcons.MdDelete color='black' fontSize="1.3rem"/>delete
+                                            </button>
+                                            {/* <Modal
+                                            onClose={modalClose}
+                                            open={open}
+                                            style={{
+                                            position: 'absolute',
+                                            border: '2px solid #000',
+                                            backgroundColor: 'gray',
+                                            boxShadow: '2px solid black',
+                                            height:150,
+                                            width: 300,
+                                            margin: 'auto'
+                                            }}
+                                        >
+                                        <>
+                                            <h2 className="text-lg-center">Are You Sure?</h2>
+                                            <div className="row">
+                                                <div className="col-lg-6">
+                                                    <button color='red' onClick={() => onDelete(data.id)}>
+                                                        Yes
+                                                    </button>
+                                                </div>
+                                                <div className="col-lg-6">
+                                                <Link to='/company/list'>
+                                                    <button primary onClick={modalClose}>
+                                                        Cancel
+                                                    </button>
+                                                </Link>
+                                                
+                                                </div>
+                                            </div>
+                                        </>
+                                        </Modal> */}
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                                                
+                                                <Modal isOpen={open} toggle={toggle}>
+                                                    <ModalHeader
+                                                        toggle={toggle}>Warning</ModalHeader>
+                                                    <ModalBody>
+                                                        Are you sure to delete this id from the list...
+                                                    </ModalBody>
+                                                    <ModalFooter>
+                                                        <Button color="red" onClick={onDelete}>Okay</Button>
+                                                        <Button color="primary" onClick={toggle}>Cancel</Button>
+                                                    </ModalFooter>
+                                                </Modal>
+
+                                    {/* <button
+                                    style={{background:"transparent",border:"1px solid black",borderRadius:"50%",width:"40px",height:"40px"}}
+                                     onClick={()=>setCrud(crud=>!crud)}><AiIcons.AiOutlineEllipsis bo color='black' fontSize="1.3rem"/></button>
+                                    {crud
+                                    ? 
+                                    <>
+                                    <ul key={id} style={{listStyle:"none",position:"relative",marginLeft:"-60px",border:"1px solid black"
+                                                    ,width:"100px",height:"70px",background:"white"}}>
+                                        <li style={{marginBottom:"10px"}}>
+                                        <Link to='/company/edit'>
+                                            <button onClick={() => setData(data)}
+                                            style={{background:"transparent", border:"none",marginTop:"8px"}}>
+                                                <Icon name='edit'/> Edit</button>
+                                            </Link>
+                                        </li>
+                                        <li>Delete</li>
+                                    </ul>
+                                    </>
+                                    :
+                                    null} */}
                             </div>
                         </tbody>
                         </>
@@ -177,7 +313,17 @@ function Read() {
                     </table>
                     
                 </div>
-                <p>hello</p>
+                {/* <div className='col-lg-3'>
+                    filtering 
+                    <select value={filter} onChange={(e)=>{setFilter(e.target.value)}}>
+                        <option value="ps">Product & Services</option>
+                        <option value="pro">Products</option>
+                        <option value="serv">Services</option>
+                        <option value="bus">Business</option>
+                        <option value="edu">Education</option>
+                        <option value="not-selected">none</option>
+                    </select>
+                </div> */}
             </div>
         </div>
        {/* <div className='row'> */}
