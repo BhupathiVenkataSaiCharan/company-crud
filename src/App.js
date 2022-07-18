@@ -11,6 +11,7 @@ import Create from './CRUD/Create';
 import Read from './CRUD/Read';
 import Update from './CRUD/Update';
 import View from "./CRUD/View";
+import Login from "./Login/Login";
 
 
 function App() {
@@ -25,8 +26,11 @@ function App() {
           <Route path='/company/read' element={<Read/>}/>
           <Route path='/company/edit' element={<Update/>}/>
           <Route path="/company/view" element={<View/>}/>
+
           <Route path="*" element={<Navigate replace to="/"/>}/>
-          <Route path="/" element={<Navigate replace to="/company/list"/>}/>
+          <Route path="/" element={<Navigate replace to="/company/login"/>}/>
+          
+          <Route path="/company/login" element={<Login/>} />
         </Routes>
       </Router>
     </div>

@@ -110,12 +110,13 @@ function Update() {
                     <label>Line of Business</label>
                     {/* <input placeholder='Line of Business' value={lineofBusiness} onChange={(e) => setLineofBusiness(e.target.value)}/> */}
                     <select value={lineofBusiness} onChange={(e)=>{setLineofBusiness(e.target.value)}}>
-                        <option value="Products and Services">Product & Services</option>
+                        <option value="Products & Services">Product & Services</option>
                         <option value="Products">Products</option>
                         <option value="Services">Services</option>
                         <option value="Business">Business</option>
                         <option value="Education">Education</option>
                         <option value="Others">Others</option>
+                        <option value="not-selected">none</option>
                     </select>
                 </Form.Field>
                 <Form.Field>
@@ -134,16 +135,16 @@ function Update() {
                     <label>Discount</label>
                     {/* <input  placeholder='Discount' value={discount} onChange={(e) => setDiscount(e.target.value)}/> */}
                     <select value={discount} onChange={(e)=>setDiscount(e.target.value)}>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Rating</label>
                     {/* <input  placeholder='Rating' value={rating} onChange={(e) => setRating(e.target.value)}/> */}
                     <select value={rating} onChange={(e)=>setRating(e.target.value)}>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </Form.Field>
                 <Form.Field>

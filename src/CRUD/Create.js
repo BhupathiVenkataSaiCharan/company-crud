@@ -32,6 +32,8 @@ function Create() {
 
         const url = `https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud`
 
+        const regexn = /^(\+91[-\s]?)?[0]?(91)?[123456789]\d{9}$/;
+
         // const formData = new FormData()
         // formData.append('image',image)
         // console.log("hello charan")
@@ -43,14 +45,15 @@ function Create() {
                     text: 'Company name should not be empty',
                     showConfirmButton: true
                   })
-            }else if(companyNumber.length !== 10){
+            // }else if(companyNumber.length !== 10){
+            }else if(!regexn.test(companyNumber)){
                 return Swal.fire({
                     icon: 'error',
                     title: 'Error',
                     text: 'mobile number should be a 10 digit number',
                     showConfirmButton: true
                   })
-            }else if(discount == "not-selected"){
+            }else if(discount === "not-selected"){
                 return Swal.fire({
                     icon: 'error',
                     title: 'Error',
@@ -121,11 +124,12 @@ function Create() {
                     <label>Line of business of the company</label>
                     {/* <input  placeholder='Line of Business' onChange={(e) => setLineofBusiness(e.target.value)}/> */}
                     <select value={lineofBusiness} onChange={(e)=>{setLineofBusiness(e.target.value)}}>
-                        <option value="ps">Product & Services</option>
-                        <option value="pro">Products</option>
-                        <option value="serv">Services</option>
-                        <option value="bus">Business</option>
-                        <option value="edu">Education</option>
+                        <option value="Product & Services">Product & Services</option>
+                        <option value="Products">Products</option>
+                        <option value="Services">Services</option>
+                        <option value="Business">Business</option>
+                        <option value="Education">Education</option>
+                        <option value="Others">Others</option>
                         <option value="not-selected">none</option>
                     </select>
                 </Form.Field>
@@ -145,8 +149,8 @@ function Create() {
                     <label>Discount</label>
                     {/* <input  placeholder='Discount' onChange={(e) => setDiscount(e.target.value)}/> */}
                     <select value={discount} onChange={(e)=>setDiscount(e.target.value)}>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                         <option value="not-selected">none</option>
                     </select>
                 </Form.Field>
@@ -154,8 +158,8 @@ function Create() {
                     <label>Rating</label>
                     {/* <input  placeholder='Rating' onChange={(e) => setRating(e.target.value)}/> */}
                     <select value={rating} onChange={(e)=>setRating(e.target.value)}>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                         <option value="not-selected">none</option>
                     </select>
                 </Form.Field>
