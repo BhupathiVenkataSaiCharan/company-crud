@@ -371,7 +371,9 @@ function Read() {
                     </select>
                 </div> */}
                 <div className='col-lg-3'>
-                    <CSVLink {...csvReport}>Export to CSV</CSVLink>
+                    <button style={{width:"150px",height:"40px"}}>
+                        <CSVLink {...csvReport}>Export data</CSVLink>
+                    </button>
                 </div>
             </div>
         </div>
