@@ -1,9 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-
 import "../login.css";
 
 import * as FaIcons from "react-icons/fa";
+
+import Swal from 'sweetalert2';
+
+
+import OTPInput, { ResendOTP } from "otp-input-react";
+
 
 const Login = () => {
 
@@ -32,16 +37,16 @@ const Login = () => {
 
     let navigate = useNavigate();
 
-    const handleSubmits = (e) =>{
-         e.preventDefault();
-         const passerrors = validates(formValues);
+    // const handleSubmits = (e) =>{
+    //      e.preventDefault();
+    //      const passerrors = validates(formValues);
       
-        if (Object.keys(passerrors).length) {
-          setFormErrors(passerrors);
-        } else {
-          navigate("/company/list");
-        }
-    }
+    //     if (Object.keys(passerrors).length) {
+    //       setFormErrors(passerrors);
+    //     } else {
+    //       navigate("/company/list");
+    //     }
+    // }
 
 
     useEffect(()=>{
@@ -91,6 +96,23 @@ const Login = () => {
         }
         return errors;
     };
+
+
+    const [otp, setOtp] = useState("");
+
+    const handleSubmits = (e) =>{
+        e.preventDefault();
+        if(otp.length !==4){
+            return Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Invalid OTP',
+                showConfirmButton: true
+              })
+        }else{
+            navigate("/company/list");
+        }
+    }
 
 
   return (
@@ -144,7 +166,7 @@ const Login = () => {
 
                     <form onSubmit={handleSubmits} >
                         <div>
-                            <div>
+                            {/* <div>
                                 <label style={{position:"relative", top:"8px",right:"5px",left:"80px"}} ><FaIcons.FaLock/></label>
                                 <input className='input_fieldp' type="password" name='password' placeholder='&nbsp;'
                                 value={formValues.password}
@@ -152,9 +174,11 @@ const Login = () => {
                                 style={{width:"180px",height:"35px",backgroundColor:"transparent"}}
                                 />
                                 <label className='input_labelp'>Password</label>
-                                <p style={{color:"red",fontSize:"13px",position:"fixed",marginLeft:"690px",marginTop:"10px"}}>{formErrors.password}</p>
-                            </div>
-                    
+                                <p style={{color:"red",fontSize:"13px",marginTop:"10px"}}>{formErrors.password}</p>
+                            </div>                     */}
+                            <OTPInput value={otp} onChange={setOtp} autoFocus OTPLength={4} otpType="number" disabled={false}/>
+                                <ResendOTP onResendClick={() => console.log("Resend clicked")} />
+                           
                             <button  
                                     style={{width:"210px",height:"30px",fontSize:"15px",
                                             marginLeft:"30px",marginTop:"40px",

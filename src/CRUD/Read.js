@@ -10,6 +10,9 @@ import * as AiIcons from 'react-icons/ai';
 import * as FiIcons from "react-icons/fi";
 
 
+import { CSVLink } from 'react-csv';
+
+
 import {
      Modal, ModalFooter,
     ModalHeader, ModalBody
@@ -73,7 +76,7 @@ function Read() {
             })
     }
 
-    const onDelete = (id) => {
+    const onDelete = () => {
         axios.delete(`https://62c45bb0abea8c085a73b996.mockapi.io/Reactcrud/${idToDelete}`)
 
         
@@ -132,6 +135,30 @@ function Read() {
     // const [crud, setCrud] = useState(false);
 
 
+    //filter items
+
+    // const [items, setItems] = useState(APIData);
+
+    // const filterItem = (categItem) =>{
+    //     const updatedItems = APIData.filter((curElem)=>{
+    //         return curElem.lineofBusiness === categItem;
+    //     });
+    //     setItems(updatedItems);
+    // }
+
+
+    const headers = [
+        {label:'Company Name', key:'companyName'},
+        {label:'Company Number', key:'companyNumber'},
+        {label:'Email', key:'email'}
+    ];
+
+    const csvReport ={
+        filename: 'Report.csv',
+        headers:headers,
+        data: APIData
+    };
+
 
     return (
         <>
@@ -155,12 +182,12 @@ function Read() {
 
                             {/* Search:<input type="text" placeholder='type to search' value={searchText} onChange={(e)=>handleChange(e.target.value)} /> */}
 
-<table style={{width:"700px",height:"200px"}}>
-       <thead style={{margin:"50px"}}>
-        <tr>
-            <th style={{textAlign:"center"}}>List of Companies</th>
-        </tr>
-       </thead>
+                <table style={{width:"700px",height:"200px"}}>
+                    <thead style={{margin:"50px"}}>
+                        <tr>
+                            <th style={{textAlign:"center"}}>List of Companies</th>
+                        </tr>
+                    </thead>
        
 {/*to add search for 1 particular id-------
 .filter(data=> data.companyName.toLowerCase().includes(search.toLowerCase()))-----add this tho below btw APIData and .map */}
@@ -168,6 +195,8 @@ function Read() {
 {/*to add search for all categories of array data--------
 .filter(data =>Object.values(data).some(value => value.toLowerCase().includes(search.toLowerCase())))
 -----add this tho below btw APIData and .map */}
+{/* .filter(data =>Object.values(data).some(value => value.toLowerCase().includes(search.toLowerCase()))) */}
+        {/* {items.filter(data =>Object.values(data).some(value => value.toLowerCase().includes(search.toLowerCase()))).map((data,id)=>{ */}
         {APIData.filter(data =>Object.values(data).some(value => value.toLowerCase().includes(search.toLowerCase()))).map((data,id)=>{
                     return(
                         <>
@@ -314,6 +343,23 @@ function Read() {
                     
                 </div>
                 {/* <div className='col-lg-3'>
+                    <h1>Filter</h1>
+                    <selct value={setAPIData}>
+                        <option><button onClick={()=>setItems(APIData)}>All</button></option>
+                        <option></option>
+                    </selct>
+                    <ul style={{listStyle:"none"}}>
+                        <li></li>
+                        <li><button onClick={()=>filterItem('Product & Services')}>Product & Services</button></li>
+                        <li><button onClick={()=>filterItem("Products")}>Products</button></li>
+                        <li><button onClick={()=>filterItem("Services")}>Services</button></li>
+                        <li><button onClick={()=>filterItem("Business")}>Business</button></li>
+                        <li><button onClick={()=>filterItem("Education")}>Education</button></li>
+                        <li><button onClick={()=>filterItem("Others")}>Others</button></li>
+                        <li><button onClick={()=>filterItem("not-selected")}>none</button></li>
+                    </ul>
+                </div> */}
+                {/* <div className='col-lg-3'>
                     filtering 
                     <select value={filter} onChange={(e)=>{setFilter(e.target.value)}}>
                         <option value="ps">Product & Services</option>
@@ -324,6 +370,9 @@ function Read() {
                         <option value="not-selected">none</option>
                     </select>
                 </div> */}
+                <div className='col-lg-3'>
+                    <CSVLink {...csvReport}>Export to CSV</CSVLink>
+                </div>
             </div>
         </div>
        {/* <div className='row'> */}
