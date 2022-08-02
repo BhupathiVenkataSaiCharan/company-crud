@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import * as CgIcons from "react-icons/cg"
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
@@ -99,6 +99,11 @@ const SideMenu = () => {
   const showSidebar = () => setSidebar(!sidebar);
   const showDropbar = () => setDropbar(!dropbar);
 
+  let navigate = useNavigate();
+  const handleLogout = () =>{
+    navigate("/company/login");
+  }
+
   return (
     <>
     <div>
@@ -135,7 +140,8 @@ const SideMenu = () => {
             <AiIcons.AiOutlineClose onClick={showDropbar}/>
           </RightNavIcon1>
           <ul style={{listStyle:"none",marginTop:"-20px"}}>
-            <li><BiIcons.BiLogOut style={{width:"30px",height:"30px",marginRight:"15px",marginBottom:"10px"}}/>LogOut</li>
+            <li><BiIcons.BiLogOut style={{width:"30px",height:"30px",marginRight:"15px",marginBottom:"10px"}}/>
+            <button className='' style={{border:"none",background:"transparent",color:"white"}} onClick={handleLogout}>Logout</button></li>
             <li><FiIcons.FiFilter style={{width:"30px",height:"30px",marginRight:"15px",marginBottom:"10px"}}/>Filter</li>
             <li><TbIcons.TbSettings style={{width:"30px",height:"30px",marginRight:"15px"}}/>Settings</li>
           </ul>

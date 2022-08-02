@@ -22,6 +22,7 @@ import {
 // import { Typography } from '@material-ui/core';
 
 import SideMenu from '../SideMenu/SideMenu';
+import { RiContactsBookLine } from 'react-icons/ri';
 
 function Read() {
 
@@ -148,16 +149,56 @@ function Read() {
 
 
     const headers = [
+        {label:'ID', key:'id'},
+        {label:'Email', key:'email'},
         {label:'Company Name', key:'companyName'},
         {label:'Company Number', key:'companyNumber'},
-        {label:'Email', key:'email'}
+        {label:'Unique Number', key:'uniqueNumber'},
+        {label:'Line of Business', key:'lineofBusiness'},
+        {label:'Company Revenue', key:'companyRevenue'},
+        {label:'Opening Time', key:'openingTime'},
+        {label:'Closing Time', key:'closingTime'},
+        {label:'Discount', key:'discount'},
+        {label:'Rating', key:'rating'},
+        {label:'Address1', key:'address1'},
+        {label:'Address2', key:'address2'},
+        {label:'Pincode', key:'pincode'},
+        {label:'Area', key:'area'},
+        {label:'City', key:'city'},
+        {label:'State', key:'state'},
+        {label:'Country', key:'country'}
     ];
 
     const csvReport ={
-        filename: 'Report.csv',
+        filename: 'CompaniesList.csv',
         headers:headers,
         data: APIData
     };
+
+
+    //primenumbers
+
+    // function isPrime(num){
+    //     if(num ===2 ){
+    //         return true;
+    //     }
+    //     else if(num>1){
+    //         for(var i=2;i<num;i++){
+    //             if(num%i !==0){
+    //                 return true;
+    //             }else if(num === i*i){
+    //                 return false
+    //             }else{
+    //                 return false
+    //             }
+    //         }
+    //         }
+    //         else{
+    //             return false
+    //         }
+    //     }
+
+    //     console.log(isPrime(1224));
 
 
     return (

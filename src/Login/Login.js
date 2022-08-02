@@ -176,9 +176,12 @@ const Login = () => {
                                 <label className='input_labelp'>Password</label>
                                 <p style={{color:"red",fontSize:"13px",marginTop:"10px"}}>{formErrors.password}</p>
                             </div>                     */}
+                            <div className='' style={{marginLeft:"670px"}}>
                             <OTPInput value={otp} onChange={setOtp} autoFocus OTPLength={4} otpType="number" disabled={false}/>
-                                <ResendOTP onResendClick={() => console.log("Resend clicked")} />
-                           
+                            </div>
+                            <div className='' style={{marginLeft:"650px",marginTop:"30px",marginRight:"600px"}}>
+                            <ResendOTP onResendClick={() => console.log("Resend clicked")} />
+                            </div>
                             <button  
                                     style={{width:"210px",height:"30px",fontSize:"15px",
                                             marginLeft:"30px",marginTop:"40px",
