@@ -24,11 +24,22 @@ import {
 import SideMenu from '../SideMenu/SideMenu';
 import { RiContactsBookLine } from 'react-icons/ri';
 
+// import _ from "lodash";
+// import Pagination from '../Pagination';
+
+
+//pagination count
+// const pageSize = 5;
+
+
 function Read() {
 
+    //main data for api purpose
     const [APIData, setAPIData] = useState([]);
 
+    //this usestate if for delete operation modal
     const [idToDelete, setIdToDelete] = useState(0);
+
     
     // const url = `https://62a6f21797b6156bff833b05.mockapi.io/CRUD`
 
@@ -41,6 +52,7 @@ function Read() {
             .then((response) => {
                 console.log(response.data);
                 setAPIData(response.data);
+                // setPageList(_(response.data).slice(0).take(pageSize).value());
             })
     }, []);
 
@@ -176,6 +188,13 @@ function Read() {
     };
 
 
+    //pagination
+
+    // const pageHandler = (pageNumber) =>{
+    //     setPerpage(APIData.slice(0,pageNumber*1))
+    // }
+
+
     //primenumbers
 
     // function isPrime(num){
@@ -200,6 +219,31 @@ function Read() {
 
     //     console.log(isPrime(1224));
 
+
+    //pagination
+
+    
+
+    //paginatedposts replace
+    // const [pageList, setPageList] = useState();
+    //current page
+    // const [currentPage, setCurrentPage] = useState(1);
+
+    // const pageCount = APIData ? Math.ceil(APIData.length / pageSize) : 0;
+
+    // if(pageCount === 1) return null;
+
+    // const pages = _.range(1, pageCount+1);
+
+
+    // const pagination = (pageNo) =>{
+    //     setCurrentPage(pageNo);
+    //     const startIndex = (pageNo - 1)* pageSize;
+    //     const pageList = _(APIData).slice(startIndex).take(pageSize).value();
+    //     setPageList(pageList)
+    // }
+
+    
 
     return (
         <>
@@ -417,6 +461,29 @@ function Read() {
                     </button>
                 </div>
             </div>
+
+            {/* pagination  */}
+
+            {/* <div className='row'>
+                <div>
+                    <nav className='d-flex justify-content-center'>
+                        <ul className='pagination'>
+                            {
+                                pages.map((page)=>(
+                                    <li className={page === currentPage ? "page-item active" : "page-item"}>
+                                    <p className='page-link' onClick={()=>pagination(page)}>{page}</p>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div> */}
+            {/* <div className='row'>
+                <div>
+                    <Pagination data={APIData} pageHandler={pageHandler}/>
+                </div>
+            </div> */}
         </div>
        {/* <div className='row'> */}
 

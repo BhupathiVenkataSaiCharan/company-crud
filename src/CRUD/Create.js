@@ -26,6 +26,38 @@ function Create() {
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
 
+    //prime or not
+
+    // const [inputNumber, setInputNumber] = useState("");
+
+    // if(inputNumber == 1){
+    //     console.log("input number is neither prime nor composite")
+    // }else if(inputNumber<1){
+    //     console.log("input number is not a prime")
+    // }else{
+    //     for(var i=2; i<inputNumber;i++){
+    //         if(inputNumber%i == 0){
+    //             return Swal.fire({
+    //                 icon:'error',
+    //                 title:'Error',
+    //                 text:'Number is not a prime',
+    //                 showConfirmButton:true
+    //             });
+    //         }else{
+    //             return Swal.fire({
+    //                 icon:'success',
+    //                 title:'Correct',
+    //                 text:'Number is a prime',
+    //                 showConfirmButton:true
+    //             });
+    //         }
+    //     }
+    // }
+
+    // console.log(inputNumber);
+
+
+
     // const [checkbox, setCheckbox] = useState(false);
     // console.log(checkbox)
     const postData = () => {
@@ -99,6 +131,10 @@ function Create() {
         <div className='col-lg-4'></div>
         <div className='text-black align-content-center col-lg-5 '>
             <Form className="create-form">
+                {/* <Form.Field>
+                    <label>Number</label>
+                    <input placeholder='Enter a number' onChange={(e)=>setInputNumber(e.target.value)}/>
+                </Form.Field> */}
                 <Form.Field>
                     <label>Image</label>
                     {/* <input required placeholder='First Name' onChange={(e) => setImage(e.target.value)}/> */}
