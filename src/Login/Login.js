@@ -83,7 +83,7 @@ const Login = () => {
     const validate = (values) =>{
         const errors = {}
         
-        const regexn = /^(\+91[-\s]?)?[0]?(91)?[789]\d{9}$/;
+        const regexn = /^(\+91[-\s]?)?[0]?(91)?[123456789]\d{9}$/;
         
         /*number validation */
 
