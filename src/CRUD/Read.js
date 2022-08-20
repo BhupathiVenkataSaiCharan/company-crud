@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Table, Button, List, Popup, Grid, Icon,Dropdown,Menu, Header } from 'semantic-ui-react';
 import { useNavigate, Link } from 'react-router-dom';
 
+import "../Login/login.css";
+
 import * as CgIcons from "react-icons/cg"
 import * as MdIcons from "react-icons/md"
 import * as FaIcons from 'react-icons/fa';
@@ -11,6 +13,8 @@ import * as FiIcons from "react-icons/fi";
 
 
 import { CSVLink } from 'react-csv';
+
+// import "../CRUD/Read.css"
 
 
 import {
@@ -255,8 +259,8 @@ function Read() {
             </div>
             <div className='row'>
                 <div className='col-lg-3'></div>
-                <div className='col-lg-6'>
-                    <Button primary
+                <div className='adding col-lg-6'>
+                    <Button primary className='add'
                         style={{width:"150px",height:"40px"}}
                         onClick={addUser}>Add Company</Button>
 
@@ -270,7 +274,9 @@ function Read() {
                 <table style={{width:"700px",height:"200px"}}>
                     <thead style={{margin:"50px"}}>
                         <tr>
-                            <th style={{textAlign:"center"}}>List of Companies</th>
+                            <th className='company' style={{textAlign:"center"}}>
+                                <h3>List of Companies</h3>
+                            </th>
                         </tr>
                     </thead>
        
@@ -288,8 +294,11 @@ function Read() {
                         {/* <tbody>
                             data.image
                         </tbody> */}
-                        <tbody key={id}>
-                            <li style={{ minHeight:"140px",borderRadius:"5px",margin:"20px 0px",listStyle:"none",padding:"25px",
+                        <div>
+                        <tbody className='table-data' key={id}>
+                            {/* <li className='list' style={{ minHeight:"140px",borderRadius:"5px",margin:"20px 0px",listStyle:"none",padding:"25px",
+                                        backgroundColor:"white",boxShadow:"0 0 20px 0px rgba(0,0,0,0.2)"}}> */}
+                                        <li className='list' style={{ minHeight:"140px",borderRadius:"5px",listStyle:"none",padding:"25px",
                                         backgroundColor:"white",boxShadow:"0 0 20px 0px rgba(0,0,0,0.2)"}}>
                             <tr>
                             <Link to="/company/view">
@@ -421,6 +430,7 @@ function Read() {
                                     null} */}
                             </div>
                         </tbody>
+                        </div>
                         </>
                             )
                         })}
@@ -455,7 +465,7 @@ function Read() {
                         <option value="not-selected">none</option>
                     </select>
                 </div> */}
-                <div className='col-lg-3'>
+                <div className='col-lg-3 excel'>
                     <button style={{width:"150px",height:"40px"}}>
                         <CSVLink {...csvReport}>Export data</CSVLink>
                     </button>

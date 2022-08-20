@@ -13,6 +13,9 @@ import Update from './CRUD/Update';
 import View from "./CRUD/View";
 import Login from "./Login/Login";
 
+import CardCarousel from "./CardCarousel/CardCarousel";
+import ExcelData from "./ImportExceldata/ExcelData";
+
 
 function App() {
   return (
@@ -31,6 +34,8 @@ function App() {
           <Route path="/" element={<Navigate replace to="/company/login"/>}/>
           
           <Route path="/company/login" element={<Login/>} />
+          <Route path="/carousel" element={<CardCarousel/>}/>
+          <Route path="/exceldata" element={<ExcelData/>}/>
         </Routes>
       </Router>
     </div>

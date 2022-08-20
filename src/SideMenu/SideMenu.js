@@ -10,6 +10,7 @@ import * as TbIcons from "react-icons/tb";
 import {SidemenuData} from './SidemenuData';
 import SubMenu from './SubMenu';
 
+import "../Login/login.css";
 
 // display: flex;
   // justify-content: flex-start;
@@ -36,7 +37,7 @@ const LeftNavIcon = styled(Link)`
 //   justify-content: flex-end;
 //   align-items: center;
 const RightNavIcon = styled(Link)`
-  margin-left: 1300px;
+  margin-left: 1000px;
   font-size: 2.5rem;
   background:transparent;
   display:flex;
@@ -107,16 +108,18 @@ const SideMenu = () => {
   return (
     <>
     <div>
-      <div>
-        <Nav>
+      <div className='back'>
+        <Nav className='nav'>
           <LeftNavIcon to='#'>
           {/* onClick={showSidebar} */}
             <FaIcons.FaBars onClick={showSidebar}/>
           </LeftNavIcon>
+          <div className='profile-icon'>
           <RightNavIcon to='#'>
           {/* onClick={showSidebar} */}
             <CgIcons.CgProfile  onClick={showDropbar}/>
           </RightNavIcon>
+          </div>
         </Nav>
       </div>
       <div>
@@ -132,8 +135,8 @@ const SideMenu = () => {
           </SidebarWrap>
         </LeftbarNav>
       </div>
-      <div> 
-        <RightbarNav dropbar={dropbar}>
+      <div className='profile'> 
+        <RightbarNav dropbar={dropbar} className="menu">
         <SidebarWrap>
           <RightNavIcon1 to='#'>
           {/* onClick={showSidebar}  */}

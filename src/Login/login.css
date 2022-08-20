@@ -1,0 +1,563 @@
+.input_field{
+    width: 100%;
+    height: 40px;
+    margin-left: 125px;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  
+  .input_label{
+    position: relative;
+    left: -180px;
+    top: 4px;
+    pointer-events: none;
+    font-size: 16px;
+  }
+  .input_field:focus{
+    border-color: crimson;
+  }
+  
+  .input_field:focus ~ .input_label{
+    top: -25px;
+    transition: 0.3s;
+    color: crimson;
+  }
+  
+  .input_field::placeholder {
+    color: #DCDCDC;
+  }
+  
+  .input_field:-ms-input-placeholder { 
+   color: #DCDCDC;
+  }
+  
+  .input_field::-ms-input-placeholder { 
+   color: #DCDCDC;
+  }
+  .input_field:not(:placeholder-shown) ~ label {
+        top: -25px;
+        transition: 0.3s;
+        color: black;
+  }
+  
+  /* password field*/
+  
+  .input_fieldp{
+    width: 100%;
+    height: 40px;
+    margin-left: 85px;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .input_labelp{
+    position: relative;
+    left: -180px;
+    top: 4px;
+    pointer-events: none;
+    font-size: 16px;
+  }
+  .input_fieldp:focus{
+    border-color: crimson;
+  }
+  .input_fieldp:focus ~ .input_labelp{
+    top: -25px;
+    transition: 0.3s;
+    color: crimson;
+  }
+  
+  .input_fieldp::placeholder {
+    color: #DCDCDC;
+  }
+  
+  .input_fieldp:-ms-input-placeholder{ 
+   color: #DCDCDC;
+  }
+  
+  .input_fieldp::-ms-input-placeholder{ 
+   color: #DCDCDC;
+  }
+  .input_fieldp:not(:placeholder-shown) ~ label {
+        top: -25px;
+        transition: 0.3s;
+        color: black;
+  }
+
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (min-width: 280px) {
+  .otp-heading h1{
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 50px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 50px;
+    margin-right: 60px;
+    margin-bottom: 30px;
+    background-color: transparent;
+
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 55px;
+    background-color: #0d6efd;
+    /* background-color: rgb(0,110,255); */
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+
+@media (min-width: 400px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 100px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 100px;
+    margin-right: 90px;
+    margin-bottom: 30px;
+    background-color: transparent;
+
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 105px;
+    background-color: #0d6efd;
+    /* background-color: rgb(0,110,255); */
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+@media (min-width: 450px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 120px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 125px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+
+@media (min-width: 500px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 140px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 140px;
+    margin-right: 150px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 145px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+
+@media (min-width: 550px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 120px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 125px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+
+/*media queries mainly for min-width: 600px,786px,992px,1200px */
+
+@media (min-width: 600px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 200px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 200px;
+    margin-right: 190px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 205px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 280px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 280px;
+    margin-right: 280px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 285px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+
+@media (min-width: 786px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 290px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 290px;
+    margin-right: 285px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 295px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+@media (min-width: 820px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 300px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 300px;
+    margin-right: 310px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 305px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+/* rightmenu */
+  .profile .menu{
+    margin-right: 700px;
+  }
+
+  .profile-icon{
+    margin-right: 1400px;
+    margin-left: -250px;
+    display: flex;
+  }
+
+  .adding .company h3{
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+  }
+
+  .adding .table-data .list{
+    width: 740px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+  }
+  .excel{
+    position: absolute;
+    margin-left: 600px;
+    margin-top: 90px;
+  }
+  .adding .add{
+    margin-left: 50px;
+    margin-top: 20px;
+  }
+  .adding input{
+    margin-top: 20px;
+  }
+  .back .nav{
+    width: 821px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 390px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 390px;
+    margin-right: 390px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 0px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 400px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 400px;
+    margin-right: 415px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: -15px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 500px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 500px;
+    margin-right: 490px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: 10px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+
+@media (min-width: 1280px) {
+  .otp-heading h1{
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .otp-input{
+    margin-left: 530px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 530px;
+    margin-right: 540px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: -10px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+}
+
+
+/* my laptop screen resolution 15.6 === 1366*768 */
+@media (min-width: 1366px) {
+  .otp-heading h1{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .otp-input{
+    margin-left: 650px;
+    margin-bottom: 30px;
+  }
+  .resend-otp{
+    margin-left: 650px;
+    margin-right: 675px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    
+  }
+  .otp-button{
+    width: 180px;
+    height:30px;
+    font-size: 15px;
+    margin-left: -15px;
+    background-color: #0d6efd;
+    border-radius: 5px 5px 5px 5px;
+  }
+/* rightmenu */
+  .profile .menu{
+    margin-right: 0px;
+  }
+
+  .profile-icon{
+    /* margin-right: 1400px; */
+    margin-left: 450px;
+    display: flex;
+  }
+
+  .adding .company h3{
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+  }
+
+  .adding .table-data .list{
+    width: 740px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+  }
+  .excel{
+    position: absolute;
+    margin-left: 997px;
+    margin-top: 90px;
+  }
+  .adding .add{
+    margin-left: 50px;
+    margin-top: 20px;
+  }
+  .adding input{
+    margin-top: 20px;
+  }
+  .back .nav{
+    width: 1545px;
+  }
+}
+

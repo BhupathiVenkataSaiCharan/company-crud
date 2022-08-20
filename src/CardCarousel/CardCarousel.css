@@ -1,0 +1,12 @@
+@media (min-width:1366px){
+    .carding{
+        width: 350px;
+        height:300px;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: 80px;
+        padding: 140px;
+    }
+}

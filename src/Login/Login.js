@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import "../login.css";
+import "./login.css";
 
 import * as FaIcons from "react-icons/fa";
 
@@ -118,11 +118,11 @@ const Login = () => {
   return (
     <>
         <div className='container-fluid'>
-            <div className='row'>
-                <div className='col-lg-12'>
+            {/* <div className='row'>
+                <div className='col-lg-12' style={{width:"100%"}}>
                     <h1 className='text-lg-center' style={{marginTop:"100px"}}>Login with the help of OTP</h1>
                 </div>
-            </div>
+            </div> */}
             <div className='row'>
                 <div className='col-lg-12 text-lg-center'>
                     <p style={{marginTop:"100px"}}></p>
@@ -138,6 +138,9 @@ const Login = () => {
                             
                     <form onSubmit={handleSubmit} >
                         <div>
+                        <div className='otp-heading'>
+                                <h1>OTP sent to the registered Mobile Number</h1>
+                            </div>
                             <div>
                                 <label style={{position:"relative", top:"8px",right:"5px",left:"115px"}}>
 
@@ -176,18 +179,18 @@ const Login = () => {
                                 <label className='input_labelp'>Password</label>
                                 <p style={{color:"red",fontSize:"13px",marginTop:"10px"}}>{formErrors.password}</p>
                             </div>                     */}
-                            <div className='' style={{marginLeft:"670px"}}>
+                            {/* style={{marginLeft:"670px"}} */}
+                            <div className='otp-heading'>
+                                <h1>OTP sent to the registered Mobile Number</h1>
+                            </div>
+                            <div className='otp-input'>
                             <OTPInput value={otp} onChange={setOtp} autoFocus OTPLength={4} otpType="number" disabled={false}/>
                             </div>
-                            <div className='' style={{marginLeft:"650px",marginTop:"30px",marginRight:"600px"}}>
+                            {/* style={{marginLeft:"650px",marginTop:"30px",marginRight:"600px"}} */}
+                            <div className='resend-otp'>
                             <ResendOTP onResendClick={() => console.log("Resend clicked")} />
                             </div>
-                            <button  
-                                    style={{width:"210px",height:"30px",fontSize:"15px",
-                                            marginLeft:"30px",marginTop:"40px",
-                                            backgroundColor:" rgb(0, 110, 255)"
-                                            }}>
-                                            Login</button>
+                            <button className='otp-button'>Login</button>
                         </div>
                     </form>
                 }
